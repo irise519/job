@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "求职助手 - 一键填写网申",
+  "version": "1.0.0",
+  "description": "上传简历自动提取信息，一键填写网申表单，岗位收藏，云端同步。",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting",
+    "https://*.zhaopin.com/*",
+    "https://*.liepin.com/*",
+    "https://*.bosszhipin.com/*",
+    "https://*.51job.com/*"
+  ],
+  "host_permissions": [
+    "https://*.zhaopin.com/*",
+    "https://*.liepin.com/*",
+    "https://*.bosszhipin.com/*",
+    "https://*.51job.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "求职助手"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.zhaopin.com/*",
+        "https://*.liepin.com/*",
+        "https://*.bosszhipin.com/*",
+        "https://*.51job.com/*"
+      ],
+      "js": ["content.js"]
+    }
+  ]
+}
