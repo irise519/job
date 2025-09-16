@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>求职助手</title>
+  <link rel="stylesheet" href="popup.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body style="width: 400px; padding: 15px; font-family: 'Segoe UI', sans-serif;">
+  <!-- 简化导航 -->
+  <div class="nav-tabs">
+    <button class="tab-btn active" data-tab="dashboard">首页</button>
+    <button class="tab-btn" data-tab="resume">简历</button>
+    <button class="tab-btn" data-tab="jobs">岗位</button>
+    <button class="tab-btn" data-tab="settings">设置</button>
+  </div>
+
+  <!-- 内容区域 -->
+  <div id="dashboard" class="tab-content active">
+    <h3>欢迎使用</h3>
+    <p>已保存简历：<span id="resume-status">未导入</span></p>
+    <p>已收藏岗位：<span id="job-count">0</span> 个</p>
+    <button id="fill-btn" disabled>一键填写网申</button>
+  </div>
+
+  <div id="resume" class="tab-content">
+    <h3>上传简历</h3>
+    <input type="file" id="resume-upload" accept=".pdf,.doc,.docx" />
+    <button id="extract-btn">解析简历</button>
+    <div id="resume-fields" style="margin-top: 15px; display: none;">
+      <label>姓名：<input type="text" id="name" placeholder="张三" /></label><br/>
+      <label>电话：<input type="tel" id="phone" placeholder="138-0000-0000" /></label><br/>
+      <label>邮箱：<input type="email" id="email" placeholder="zhangsan@example.com" /></label><br/>
+      <label>学历：<input type="text" id="education" placeholder="本科" /></label><br/>
+      <button id="save-resume-btn">保存到云端</button>
+    </div>
+  </div>
+
+  <div id="jobs" class="tab-content">
+    <h3>收藏岗位</h3>
+    <input type="text" id="job-title" placeholder="岗位名称" /><br/>
+    <input type="text" id="company" placeholder="公司名称" /><br/>
+    <input type="text" id="salary" placeholder="薪资范围" /><br/>
+    <input type="url" id="job-url" placeholder="申请链接" /><br/>
+    <button id="save-job-btn">收藏</button>
+    <div id="job-list" style="margin-top: 10px;"></div>
+  </div>
+
+  <div id="settings" class="tab-content">
+    <h3>设置</h3>
+    <label>自动填充模式：</label>
+    <select id="auto-fill-mode">
+      <option value="exact">精确匹配</option>
+      <option value="loose" selected>模糊匹配（推荐）</option>
+    </select><br/><br/>
+    <button id="logout-btn">退出登录</button>
+    <button id="clear-data-btn">清除数据</button>
+  </div>
+
+  <script src="firebase-config.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
